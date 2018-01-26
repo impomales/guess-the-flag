@@ -1,3 +1,4 @@
+/* global fetch */
 import React, { Component } from 'react';
 import GuessForm from './GuessForm';
 import Flag from './Flag';
@@ -41,7 +42,7 @@ class App extends Component {
           <h1>Guess The Flag</h1>
         </header>
         <GuessForm />
-        <Flag />
+        <Flag flag={ this.state.flag } />
       </div>
     );
   }
