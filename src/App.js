@@ -38,11 +38,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header style={{
+          "backgroundImage": `url(${'globe.jpeg'})`,
+          "backgroundSize": "cover",
+          "backgroundPosition": "center center"
+        }}>
           <h1>Guess The Flag</h1>
         </header>
-        <GuessForm />
-        <Flag flag={ this.state.flag } />
+        <div className="main">
+          <GuessForm />
+          <Flag flag={ this.state.flag } />
+        </div>
       </div>
     );
   }

@@ -1,3 +1,18 @@
+
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  height: 200px;
+}
+
+h1 {
+  padding-top: 20px;
+  padding-left: 20px;
+  text-align: left;
+  color: white;
+  text-shadow: 2px 4px 4px #333;
+  margin-top: 0;
 }
