@@ -13,9 +13,14 @@ class App extends Component {
     };
     
     this.checkGuess = this.checkGuess.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
   
   componentDidMount() {
+    this.refresh();
+  }
+  
+  refresh() {
     const  url = 'https://restcountries.eu/rest/v2/all';
     let countries = [];
     
@@ -28,6 +33,7 @@ class App extends Component {
             name: data[randomIndx].name,
             flag: data[randomIndx].flag
           };
+          data.splice(randomIndx, 1);
           countries.push(country);
         }
         
@@ -57,7 +63,8 @@ class App extends Component {
         <div className="main">
           <GuessForm 
             countries={ this.state.countries }
-            checkGuess= { this.checkGuess }/>
+            checkGuess= { this.checkGuess }
+            refresh={ this.refresh }/>
           <Flag flag={ this.state.flag } />
         </div>
       </div>

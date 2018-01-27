@@ -11,16 +11,23 @@ class GuessForm extends Component {
         
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleNext = this.handleNext.bind(this);
     }
     
     handleSubmit(e) {
         e.preventDefault();
+        if (!this.state.value) return;
         var isCorrect = this.props.checkGuess(this.state.value);
         this.setState({ haveGuessed: true, isCorrect});
     }
     
     handleChange(e) {
         this.setState({ value: e.target.value });
+    }
+    
+    handleNext() {
+        this.props.refresh();
+        this.setState({ value: '', haveGuessed: false, isCorrect: false });
     }
     
     render() {
@@ -42,14 +49,21 @@ class GuessForm extends Component {
             return (
                 <form onSubmit={this.handleSubmit}>
                     { countries }
-                    <input type="submit" value="guess" />
+                    <button type="submit">Guess</button>
                 </form>
             );
         }
         else {
+            let result;
             if (isCorrect) {
-                return <div>Correct: {this.state.value}</div>;
-            } else return <div>Incorrect: {this.state.value}</div>;
+                result = <span>Correct: {this.state.value}</span>;
+            } else result = <span>Incorrect: {this.state.value}</span>;
+            
+            return (
+              <div>
+                { result }<button onClick={this.handleNext}>Next</button>
+              </div>  
+            );
         }
     }
 }
