@@ -1,0 +1,28 @@
+.result, .guessForm {
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 25px;
+}
+
+button {
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: #4a91ba;
+    font-size: 25px;
+    padding: 0px 15px;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media (max-width: 800px) {
+    .result, .guessForm {
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding-left: 30px;
+    }
+}

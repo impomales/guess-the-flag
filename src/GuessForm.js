@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './GuessForm.css';
 
 class GuessForm extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class GuessForm extends Component {
                     );
             });
             return (
-                <form onSubmit={this.handleSubmit}>
+                <form className="guessForm" onSubmit={this.handleSubmit}>
                     { countries }
                     <button type="submit">Guess</button>
                 </form>
@@ -56,11 +57,11 @@ class GuessForm extends Component {
         else {
             let result;
             if (isCorrect) {
-                result = <span>Correct: {this.state.value}</span>;
-            } else result = <span>Incorrect: {this.state.value}</span>;
+                result = <span style={{color: "green"}}>Correct: {this.state.value}</span>;
+            } else result = <span style={{color: "red"}}>Incorrect: {this.state.value}</span>;
             
             return (
-              <div>
+              <div className="result">
                 { result }<button onClick={this.handleNext}>Next</button>
               </div>  
             );

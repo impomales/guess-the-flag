@@ -64,6 +64,7 @@ class App extends Component {
           <GuessForm 
             countries={ this.state.countries }
             checkGuess= { this.checkGuess }
+            flas={ this.state.flag }
             refresh={ this.refresh }/>
           <Flag flag={ this.state.flag } />
         </div>
