@@ -11,6 +11,8 @@ class App extends Component {
       countries: [],
       flag: ''
     };
+    
+    this.checkGuess = this.checkGuess.bind(this);
   }
   
   componentDidMount() {
@@ -35,6 +37,13 @@ class App extends Component {
       .catch(e => console.log(e));
   }
   
+  checkGuess(guess) {
+    // check guess here.
+    const country = this.state.countries.find((country) => country.name === guess);
+    if (country.flag === this.state.flag) return true;
+    else return false;
+  }
+  
   render() {
     return (
       <div className="App">
@@ -46,7 +55,9 @@ class App extends Component {
           <h1>Guess The Flag</h1>
         </header>
         <div className="main">
-          <GuessForm />
+          <GuessForm 
+            countries={ this.state.countries }
+            checkGuess= { this.checkGuess }/>
           <Flag flag={ this.state.flag } />
         </div>
       </div>
